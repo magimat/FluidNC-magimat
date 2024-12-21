@@ -1597,7 +1597,7 @@ Error gc_execute_line(char* line) {
     if ((gc_state.spindle_speed != gc_block.values.s) || syncLaser) {
         if (gc_state.modal.spindle != SpindleState::Disable && !laserIsMotion && !state_is(State::CheckMode)) {
             protocol_buffer_synchronize();
-            spindle->setState(gc_state.modal.spindle, disableLaser ? 0 : (uint32_t)gc_block.values.s);
+            spindle->setState(gc_state.modal.spindle, disableLaser ? 0 : (uint32_t)gc_block.values.s);            
             gc_ovr_changed();
         }
         gc_state.spindle_speed = gc_block.values.s;  // Update spindle speed state.
@@ -1652,6 +1652,9 @@ Error gc_execute_line(char* line) {
         if (!state_is(State::CheckMode)) {
             protocol_buffer_synchronize();
             spindle->setState(gc_block.modal.spindle, (uint32_t)pl_data->spindle_speed);
+
+            // DUST START
+
         }
         gc_ovr_changed();
         gc_state.modal.spindle = gc_block.modal.spindle;
@@ -1928,6 +1931,9 @@ Error gc_execute_line(char* line) {
                 coords[gc_state.modal.coord_select]->get(gc_state.coord_system);
                 gc_wco_changed();  // Set to refresh immediately just in case something altered.
                 spindle->spinDown();
+                
+                // DUST STOP ??
+                
                 config->_coolant->off();
                 gc_ovr_changed();
             }
