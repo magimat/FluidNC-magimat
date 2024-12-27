@@ -44,6 +44,12 @@ enum class Cmd : uint8_t {
     SpindleOvrStop        = 0x9E,
     CoolantFloodOvrToggle = 0xA0,
     CoolantMistOvrToggle  = 0xA1,
+    
+    SpindleManualOn       = 0xB1,
+    SpindleManualOff      = 0xB0,
+    DustManualOn          = 0xD1,
+    DustManualOff         = 0xD0
+
     // Channel Extender uses the Bx range; see Channel.h
 };
 
