@@ -23,6 +23,7 @@
 
 #include <string.h>  // memset
 #include <math.h>    // sqrt etc.
+#include "DustCollector.h"
 
 // Allow iteration over CoordIndex values
 CoordIndex& operator++(CoordIndex& i) {
