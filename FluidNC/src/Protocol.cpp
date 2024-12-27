@@ -1114,6 +1114,29 @@ void protocol_do_rt_reset() {
     protocol_send_event(&restartEvent);
 }
 
+void protocol_do_manual_spindle_on() {
+    spindle->setState(SpindleState::Cw, 100);
+    log_info("SPINDLE ON");
+    gc_ovr_changed();
+}
+
+void protocol_do_manual_spindle_off() {
+    spindle->setState(SpindleState::Disable, 100);
+    log_info("SPINDLE OFF");
+    gc_ovr_changed();
+}
+
+void protocol_do_manual_dust_on() {
+    config->_dust->start();
+    log_info("DUST ON");
+}
+
+void protocol_do_manual_dust_off() {
+    config->_dust->stop();
+    log_info("DUST OFF");
+}
+
+
 const ArgEvent feedOverrideEvent { protocol_do_feed_override };
 const ArgEvent rapidOverrideEvent { protocol_do_rapid_override };
 const ArgEvent spindleOverrideEvent { protocol_do_spindle_override };
@@ -1135,6 +1158,13 @@ const NoArgEvent fullResetEvent { restart };
 const NoArgEvent runStartupLinesEvent { protocol_run_startup_lines };
 
 const NoArgEvent rtResetEvent { protocol_do_rt_reset };
+
+const NoArgEvent spindleManualOn { protocol_do_manual_spindle_on };
+const NoArgEvent spindleManualOff { protocol_do_manual_spindle_off };
+const NoArgEvent dustManualOn { protocol_do_manual_dust_on };
+const NoArgEvent dustManualOff { protocol_do_manual_dust_off };
+
+
 
 // The problem is that report_realtime_status needs a channel argument
 // Event statusReportEvent { protocol_do_status_report(XXX) };
