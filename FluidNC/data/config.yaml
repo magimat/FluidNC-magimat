@@ -82,7 +82,7 @@ control:
 
 coolant:
   flood_pin: NO_PIN
-  mist_pin: NO_PIN
+  mist_pin: gpio.2
   delay_ms: 0
 
 probe:
@@ -154,3 +154,15 @@ report_inches: false
 enable_parking_override_control: false
 use_line_numbers: false
 planner_blocks: 16
+
+relay:
+  direction_pin: NO_PIN
+  output_pin: gpio.26
+  enable_pin: NO_PIN
+  disable_with_s0: false
+  s0_with_disable: true
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 0
+  speed_map: 0=0.000% 0=100.000% 1=100.000%
+  off_on_alarm: false
