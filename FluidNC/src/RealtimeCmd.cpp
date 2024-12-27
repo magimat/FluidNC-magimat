@@ -95,6 +95,18 @@ void execute_realtime_command(Cmd command, Channel& channel) {
             break;
         case Cmd::Macro3:
             protocol_send_event(&macro3Event);
+            break;      
+        case Cmd::SpindleManualOn:
+            protocol_send_event(&spindleManualOn);
+            break;
+        case Cmd::SpindleManualOff:
+            protocol_send_event(&spindleManualOff);
+            break;
+        case Cmd::DustManualOn:
+            protocol_send_event(&dustManualOn);
+            break;
+        case Cmd::DustManualOff:
+            protocol_send_event(&dustManualOff);
             break;
     }
 }
