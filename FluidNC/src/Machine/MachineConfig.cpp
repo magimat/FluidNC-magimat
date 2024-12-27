@@ -60,7 +60,9 @@ namespace Machine {
         handler.section("axes", _axes);
 
         handler.section("control", _control);
-        handler.section("coolant", _coolant);
+
+        handler.section("dust", _dust);
+
         handler.section("probe", _probe);
         handler.section("macros", _macros);
         handler.section("start", _start);
@@ -92,6 +94,10 @@ namespace Machine {
         if (_coolant == nullptr) {
             _coolant = new CoolantControl();
         }
+
+        _dust = new DustCollector();
+
+
 
         if (_kinematics == nullptr) {
             _kinematics = new Kinematics();
@@ -257,6 +263,7 @@ namespace Machine {
         delete _axes;
         delete _i2so;
         delete _coolant;
+        delete _dust;
         delete _probe;
         delete _sdCard;
         delete _spi;

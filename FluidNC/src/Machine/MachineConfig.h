@@ -9,6 +9,7 @@
 #include "src/Configuration/HandlerBase.h"
 #include "src/Configuration/Configurable.h"
 #include "src/CoolantControl.h"
+#include "src/DustCollector.h"
 #include "src/Kinematics/Kinematics.h"
 #include "src/Control.h"
 #include "src/Probe.h"
@@ -67,6 +68,7 @@ namespace Machine {
         I2SOBus*        _i2so           = nullptr;
         Stepping*       _stepping       = nullptr;
         CoolantControl* _coolant        = nullptr;
+        DustCollector*  _dust           = nullptr;
         Probe*          _probe          = nullptr;
         Control*        _control        = nullptr;
         UserOutputs*    _userOutputs    = nullptr;
