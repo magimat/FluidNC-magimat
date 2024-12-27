@@ -1,11 +1,24 @@
 
-/*
-	Dust collector control using RF 433 
-*/
+#pragma once
 
-void initDust();
+#include "Configuration/Configurable.h"
+#include "RF433send.h"
 
-void startDust();
-void stopDust();
+class DustCollector : public Configuration::Configurable {
+
+    RfSend *tx_dust;
+    
+public:
+    DustCollector() = default;
 
 
+    void init();
+
+    void start();
+    void stop();
+
+    // Configuration handlers.
+    void group(Configuration::HandlerBase& handler) override;
+
+    ~DustCollector() = default;
+};
