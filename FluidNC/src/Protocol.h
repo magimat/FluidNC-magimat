@@ -106,6 +106,12 @@ extern const NoArgEvent startEvent;
 extern const NoArgEvent restartEvent;
 extern const NoArgEvent fullResetEvent;
 
+extern const NoArgEvent spindleManualOn;
+extern const NoArgEvent spindleManualOff;
+extern const NoArgEvent dustManualOn;
+extern const NoArgEvent dustManualOff;
+
+
 extern const NoArgEvent runStartupLinesEvent;
 
 // extern const NoArgEvent statusReportEvent;
