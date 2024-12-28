@@ -96,7 +96,7 @@ namespace Machine {
         }
 
         _dust = new DustCollector();
-
+        _dust->init();
 
 
         if (_kinematics == nullptr) {
